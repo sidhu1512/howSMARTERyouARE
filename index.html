@@ -3,62 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmark</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>AI Benchmarks Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Select a Benchmark</h1>
-        <div class="menu-grid">
-            <button class="menu-btn" onclick="getQuestions('mmlu')"> MMLU (General)</button>
-            <button class="menu-btn" onclick="getQuestions('hellaswag')"> HellaSwag (Reasoning)</button>
-            <button class="menu-btn" onclick="getQuestions('arc')"> ARC (Science)</button>
-            <button class="menu-btn" onclick="getQuestions('mathqa')"> MathQA (Math)</button>
-            <button class="menu-btn" onclick="getQuestions('truthfulqa')"> TruthfulQA (Lie Detect)</button>
-            <button class="menu-btn" onclick="getQuestions('race')"> RACE (Reading)</button>
+    <nav class="navbar">
+        <div class="brand">AI Benchmark</div>
+        <div class="nav-links">
+            <a href="#" onclick="openAbout(); return false;">About</a>
+            <a href="https://github.com/sidhu1512/howsmartyouare" target="_blank">GitHub</a>
         </div>
-    </div>
+    </nav>
 
-    <div id="quiz-modal" class="modal hidden">
-        <div class="modal-content">
+    <main class="container">
+        <div class="header-section">
+            <h1>Select a Benchmark</h1>
+            <p>Evaluate intelligence against state-of-the-art models.</p>
+        </div>
+
+        <div class="grid">
+            <button class="card" onclick="getQuestions('mmlu')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 8v.01"></path><path d="M12 16v.01"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>MMLU</h3>
+                    <span>General Knowledge</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('hellaswag')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>HellaSwag</h3>
+                    <span>Reasoning</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('arc')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"></path><path d="M14 2v7.31"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>ARC</h3>
+                    <span>Science</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('mathqa')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>MathQA</h3>
+                    <span>Mathematics</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('truthfulqa')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M8 11l4 4 4-4"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>TruthfulQA</h3>
+                    <span>Accuracy</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('race')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>RACE</h3>
+                    <span>Reading</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('aqua')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line></svg>
+                </div>
+                <div class="card-content">
+                    <h3>AQUA-RAT</h3>
+                    <span>Algebra</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('winogrande')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"></path><path d="M12 2v20"></path><path d="M4.93 4.93l14.14 14.14"></path><path d="M4.93 19.07l14.14-14.14"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>Winogrande</h3>
+                    <span>Ambiguity</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('commonsense')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3M3.343 5.343l.707.707M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>CommonsenseQA</h3>
+                    <span>Daily Life</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('sciq')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2h4"></path><path d="M12 2v2"></path><path d="M6 20a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v13z"></path><path d="M8 12h8"></path><path d="M8 16h8"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>SciQ</h3>
+                    <span>Science Exams</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('piqa')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>PIQA</h3>
+                    <span>Physics Logic</span>
+                </div>
+            </button>
+
+            <button class="card" onclick="getQuestions('openbook')">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                </div>
+                <div class="card-content">
+                    <h3>OpenBookQA</h3>
+                    <span>Research</span>
+                </div>
+            </button>
+        </div>
+    </main>
+
+    <div id="quiz-modal" class="modal-overlay hidden">
+        <div class="modal-window">
             <div class="modal-header">
-                <h2 id="modal-category-title">Category Name</h2>
-                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <span id="question-counter" class="mono-badge">01 / 50</span>
+                <button class="icon-btn" onclick="closeModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
             </div>
 
-            <div class="modal-body">
-                <!-- <div class="progress-container">
-                    <div id="progress-fill" class="progress-fill"></div>
-                </div> -->
-                <p id="question-counter">Question 1 / 50</p>
-                
-                <div id="question-text" class="question-text">
-                    Loading question...
+            <div class="modal-content">
+                <div class="question-container">
+                    <p id="question-text">Loading...</p>
+                    <button class="copy-btn" onclick="copyQuestion()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Copy
+                    </button>
                 </div>
-
-                <div id="options-container" class="options-container"></div>
+                <div id="options-grid" class="options-grid"></div>
             </div>
 
             <div class="modal-footer">
-                <button id="next-btn" class="next-btn" disabled onclick="nextQuestion()">Next Question</button>
-                <button id="finish-btn" class="finish-btn" disabled onclick="finish()">Finish</button>
+                <button id="finish-btn" class="text-btn" disabled onclick="finish()">End Session</button>
+                <button id="next-btn" class="primary-btn" disabled onclick="nextQuestion()">Next</button>
             </div>
         </div>
     </div>
 
-    <div id="chart-model" class="modal hidden">
-        <div class="modal-content" style="max-width: 700px;"> <div class="modal-header">
-                <h2>How Smart You Are</h2>
-                <span class="close-btn" onclick="closeChart()">&times;</span>
+    <div id="chart-model" class="modal-overlay hidden">
+        <div class="modal-window chart-window">
+            <div class="modal-header">
+                <h3>Performance Analysis</h3>
+                <p id="result-comment" style="color: #a1a1aa; font-size: 0.9rem; margin-top: 5px;"></p>
+                <button class="icon-btn" onclick="closeChart()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
             </div>
-
-            <div id="chart-body" style="height: 370px; width: 100%;"></div>
-
+            <div id="chart-body"></div>
         </div>
     </div>
 
-    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <div id="about-modal" class="modal-overlay hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3>About This Project</h3>
+                <button class="icon-btn" onclick="closeAbout()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="modal-content" style="line-height: 1.6; color: #a1a1aa;">
+                <p style="margin-bottom: 25px; color: #ededed;">
+                    <strong>"How Smart Are You?"</strong> is an open-source intelligence benchmark that pits human reasoning against state-of-the-art AI models like GPT-4, Claude 3, and Llama 3.
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.9rem;">
+                    
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #ededed;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+                            <strong>Logic & Reasoning</strong>
+                        </div>
+                        <ul style="padding-left: 0; list-style: none; color: #a1a1aa;">
+                            <li style="margin-bottom: 4px;">• HellaSwag (Commonsense)</li>
+                            <li style="margin-bottom: 4px;">• Winogrande (Ambiguity)</li>
+                            <li style="margin-bottom: 4px;">• PIQA (Physical Logic)</li>
+                            <li>• ARC (Complex Reasoning)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #ededed;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 8v.01"></path><path d="M12 16v.01"></path></svg>
+                            <strong>General Knowledge</strong>
+                        </div>
+                        <ul style="padding-left: 0; list-style: none; color: #a1a1aa;">
+                            <li style="margin-bottom: 4px;">• MMLU (Multitask)</li>
+                            <li style="margin-bottom: 4px;">• CommonsenseQA (Daily Life)</li>
+                            <li style="margin-bottom: 4px;">• TruthfulQA (Fact Check)</li>
+                            <li>• OpenBookQA (Research)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #ededed;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"></path><path d="M14 2v7.31"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
+                            <strong>STEM</strong>
+                        </div>
+                        <ul style="padding-left: 0; list-style: none; color: #a1a1aa;">
+                            <li style="margin-bottom: 4px;">• MathQA (Mathematics)</li>
+                            <li style="margin-bottom: 4px;">• AQUA-RAT (Algebra)</li>
+                            <li>• SciQ (Science Exams)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #ededed;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                            <strong>Language</strong>
+                        </div>
+                        <ul style="padding-left: 0; list-style: none; color: #a1a1aa;">
+                            <li>• RACE (Reading Comp)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; font-size: 0.85rem; text-align: center; border-top: 1px solid #333; padding-top: 20px;">
+                    Built by <a href="https://github.com/sidhu1512" target="_blank" style="color: #fff; text-decoration: none; font-weight: 600;">Siddharth Bhadu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
