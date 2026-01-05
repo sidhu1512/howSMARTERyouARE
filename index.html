@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>AI Benchmarks Quiz</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Select a Benchmark</h1>
+        <div class="menu-grid">
+            <button class="menu-btn" onclick="getQuestions('mmlu')"> MMLU (General)</button>
+            <button class="menu-btn" onclick="getQuestions('hellaswag')"> HellaSwag (Reasoning)</button>
+            <button class="menu-btn" onclick="getQuestions('arc')"> ARC (Science)</button>
+            <button class="menu-btn" onclick="getQuestions('mathqa')"> MathQA (Math)</button>
+            <button class="menu-btn" onclick="getQuestions('truthfulqa')"> TruthfulQA (Lie Detect)</button>
+            <button class="menu-btn" onclick="getQuestions('race')"> RACE (Reading)</button>
+        </div>
+    </div>
+
+    <div id="quiz-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-category-title">Category Name</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+
+            <div class="modal-body">
+                <!-- <div class="progress-container">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div> -->
+                <p id="question-counter">Question 1 / 50</p>
+                
+                <div id="question-text" class="question-text">
+                    Loading question...
+                </div>
+
+                <div id="options-container" class="options-container"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="next-btn" class="next-btn" disabled onclick="nextQuestion()">Next Question</button>
+                <button id="finish-btn" class="finish-btn" disabled onclick="finish()">Finish</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="chart-model" class="modal hidden">
+        <div class="modal-content" style="max-width: 700px;"> <div class="modal-header">
+                <h2>How Smart You Are</h2>
+                <span class="close-btn" onclick="closeChart()">&times;</span>
+            </div>
+
+            <div id="chart-body" style="height: 370px; width: 100%;"></div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

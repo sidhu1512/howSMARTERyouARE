@@ -1,0 +1,26 @@
+{
+  "mmlu": {
+    "labels": ["Average Human", "Claude 3.5 Sonnet", "GPT-5", "Gemini 3 Pro", "GPT-5.2", "You"],
+    "scores": [34.5, 88.7, 92.5, 91.9, 93.2, 0]
+  },
+  "hellaswag": {
+    "labels": ["Average Human", "Llama 3 (70B)", "GPT-4o", "Claude Opus 4.5", "Gemini 3 Pro", "You"],
+    "scores": [73.0, 93.0, 95.3, 96.8, 97.1, 0]
+  },
+  "mathqa": {
+    "labels": ["Average Human", "GPT-4o", "Claude 3.7 Sonnet", "Gemini 3 Pro", "OpenAI o3-mini", "You"],
+    "scores": [60.0, 92.3, 94.5, 96.0, 97.9, 0]
+  },
+  "arc": {
+    "labels": ["Average Human", "Llama 3.3", "Claude Opus 4.5", "Gemini 3 Pro", "GPT-5.2", "You"],
+    "scores": [80.0, 93.0, 94.2, 95.5, 96.8, 0]
+  },
+  "truthfulqa": {
+    "labels": ["GPT-4o", "Claude 3.5 Sonnet", "Gemini 3 Pro", "Human Expert", "GPT-5.2", "You"],
+    "scores": [65.0, 78.0, 84.5, 94.0, 95.1, 0]
+  },
+  "race": {
+    "labels": ["Average Human", "GPT-4o", "Llama 4 Scout", "Claude Opus 4.5", "GPT-5", "You"],
+    "scores": [54.0, 89.0, 91.2, 92.8, 94.5, 0]
+  }
+}

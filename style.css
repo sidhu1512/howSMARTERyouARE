@@ -1,0 +1,229 @@
+/* GLOBAL STYLES */
+:root {
+    --primary: #2563eb;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --gray: #cbd5e1;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* MENU GRID */
+.container {
+    text-align: center;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.menu-btn {
+    padding: 20px;
+    font-size: 1rem;
+    border: 2px solid var(--gray);
+    background: var(--surface);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    border-color: var(--primary);
+    background-color: #eff6ff;
+}
+
+/* --- MODAL STYLES --- */
+
+/* The Background Overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Utility to hide elements */
+.hidden {
+    display: none !important;
+}
+
+/* The White Box */
+.modal-content {
+    background-color: var(--surface);
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    
+    max-height: 90vh; 
+    
+    
+    display: flex;
+    flex-direction: column;
+    
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-body {
+    overflow-y: auto; 
+    flex: 1;          
+    padding-right: 10px; 
+    margin: 10px 0;   
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
+}
+
+.close-btn {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+.close-btn:hover { color: #000; }
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%; /* JS will change this */
+    background-color: var(--primary);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Question Area */
+.question-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Options Container */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style for Options (JS will create buttons with this class) */
+.option-btn {
+    padding: 12px;
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.option-btn:hover {
+    background-color: #f1f5f9;
+}
+
+.option-btn.selected {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.option-btn.correct {
+    background-color: #22c55e; /* Green */
+    color: white;
+}
+
+.option-btn.wrong {
+    background-color: #ef4444; /* Red */
+    color: white;
+}
+
+/* Next Button */
+.modal-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.next-btn {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.next-btn:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}
+
+/* Next Button */
+
+
+.finish-btn {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.finish-btn:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}
