@@ -2,341 +2,341 @@
   "mmlu": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       34.5,
-      90.8,
-      88.5,
-      89.8,
-      89.6,
-      91.0,
-      91.5
+      91.5,
+      85.5,
+      92.6,
+      93.0,
+      91.1,
+      92.0
     ]
   },
   "hellaswag": {
     "labels": [
       "Avg Human",
-      "DeepSeek V3",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       73.0,
-      88.9,
-      90.2,
-      93.7,
-      94.1,
-      95.8,
-      95.5
+      92.8,
+      85.3,
+      96.5,
+      97.2,
+      96.8,
+      96.0
     ]
   },
   "arc": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       80.0,
-      95.3,
+      96.2,
       93.8,
-      96.1,
-      96.7,
-      97.2,
-      97.0
+      97.5,
+      97.8,
+      97.6,
+      97.2
     ]
   },
   "mathqa": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       60.0,
-      94.8,
+      96.5,
       91.5,
-      95.2,
-      93.5,
-      96.0,
-      95.8
+      97.0,
+      96.2,
+      97.5,
+      96.8
     ]
   },
   "truthfulqa": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       94.0,
-      68.5,
+      72.5,
       72.0,
-      74.2,
-      78.5,
-      81.3,
-      79.0
+      78.8,
+      82.5,
+      85.0,
+      80.2
     ]
   },
   "race": {
     "labels": [
       "Avg Human",
-      "DeepSeek V3",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       54.0,
-      91.2,
+      93.5,
       92.5,
-      93.1,
-      93.8,
-      94.5,
-      93.4
+      95.2,
+      95.8,
+      96.0,
+      95.0
     ]
   },
   "aqua": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       45.0,
-      82.5,
+      85.8,
       80.2,
-      86.3,
-      85.0,
-      88.7,
-      87.5
+      89.5,
+      88.2,
+      90.5,
+      88.8
     ]
   },
   "winogrande": {
     "labels": [
       "Avg Human",
-      "DeepSeek V3",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       94.0,
-      89.5,
+      92.5,
       91.3,
-      93.8,
-      94.2,
-      95.0,
-      94.8
+      95.8,
+      96.2,
+      96.5,
+      95.5
     ]
   },
   "commonsense": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       89.0,
-      90.5,
+      93.5,
       92.0,
-      94.8,
-      95.2,
-      96.3,
-      95.5
+      96.2,
+      96.8,
+      97.0,
+      96.0
     ]
   },
   "sciq": {
     "labels": [
       "Avg Human",
-      "DeepSeek V3",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       85.0,
-      97.5,
+      98.2,
       97.8,
-      98.6,
-      98.5,
       99.0,
-      98.8
+      99.2,
+      99.5,
+      99.0
     ]
   },
   "piqa": {
     "labels": [
       "Avg Human",
-      "DeepSeek V3",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       80.0,
-      90.3,
+      93.0,
       91.5,
-      93.7,
-      94.0,
-      95.2,
-      94.5
+      95.8,
+      96.0,
+      96.5,
+      95.5
     ]
   },
   "openbook": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       82.0,
-      94.0,
+      96.0,
       95.2,
-      96.8,
-      97.0,
-      97.5,
-      97.2
+      97.8,
+      98.0,
+      98.2,
+      97.5
     ]
   },
   "boolq": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       90.0,
-      88.7,
+      92.5,
       91.2,
-      93.5,
-      94.8,
-      95.3,
-      94.2
+      95.5,
+      96.2,
+      96.5,
+      95.8
     ]
   },
   "copa": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       95.0,
-      96.2,
+      97.5,
       95.5,
-      97.8,
-      98.0,
       98.5,
-      97.5
+      99.0,
+      99.2,
+      98.5
     ]
   },
   "medmcqa": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       55.0,
-      72.3,
+      76.5,
       68.5,
-      76.8,
-      78.2,
-      80.5,
-      77.0
+      82.0,
+      83.5,
+      85.0,
+      81.5
     ]
   },
   "qasc": {
     "labels": [
       "Avg Human",
-      "DeepSeek R1",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       72.0,
-      89.5,
+      92.5,
       87.2,
-      93.1,
-      92.8,
-      94.6,
-      93.0
+      95.0,
+      95.5,
+      96.0,
+      94.5
     ]
   },
   "swag": {
     "labels": [
       "Avg Human",
-      "DeepSeek V3",
+      "DeepSeek V3.2",
       "Llama 4 Maverick",
-      "Gemini 2.5 Pro",
-      "GPT-4.5",
-      "Claude 4 Opus",
-      "Grok 3"
+      "Gemini 3.1 Pro",
+      "GPT-5.4",
+      "Claude Opus 4.6",
+      "Grok 4.2"
     ],
     "scores": [
       88.0,
-      89.5,
+      92.5,
       91.0,
-      93.2,
-      94.5,
-      95.0,
-      93.8
+      95.5,
+      96.5,
+      96.8,
+      95.2
     ]
   }
 }

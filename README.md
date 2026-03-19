@@ -4,7 +4,7 @@
 
 ![Hero Preview](data/img/hero-preview.png)
 
-**Can you outsmart GPT-4.5, Claude 4, and Gemini 2.5 Pro?**
+**Can you outsmart GPT-5.4, Claude Opus 4.6, and Gemini 3.1 Pro?**
 
 [**Launch Live Demo**](https://sidhu1512.github.io/howSMARTERyouARE/) · [**View Source**](https://github.com/sidhu1512/howSMARTERyouARE)
 
@@ -14,7 +14,7 @@
 
 ## What Is This?
 
-A web-based intelligence benchmark that puts **you** in the same seat as frontier AI models. Take the exact same tests used to evaluate GPT-4.5, Claude 4 Opus, Gemini 2.5 Pro, DeepSeek R1, Llama 4 Maverick, and Grok 3 — then see how you compare.
+A web-based intelligence benchmark that puts **you** in the same seat as frontier AI models. Take the exact same tests used to evaluate GPT-5.4, Claude Opus 4.6, Gemini 3.1 Pro, DeepSeek V3.2, Llama 4 Maverick, and Grok 4.2 — then see how you compare.
 
 - **90,850+ questions** across **17 official benchmarks**
 - **50 random questions** per session, scored instantly
@@ -153,12 +153,12 @@ No dependencies. No build step. No node_modules.
 
 | Model | Source |
 |-------|--------|
-| GPT-4.5 | OpenAI |
-| Claude 4 Opus | Anthropic |
-| Gemini 2.5 Pro | Google DeepMind |
-| DeepSeek R1 | DeepSeek |
+| GPT-5.4 | OpenAI |
+| Claude Opus 4.6 | Anthropic |
+| Gemini 3.1 Pro | Google DeepMind |
+| DeepSeek V3.2 | DeepSeek |
 | Llama 4 Maverick | Meta |
-| Grok 3 | xAI |
+| Grok 4.2 | xAI |
 
 All AI scores are from published benchmark results and standardized evaluations.
 
