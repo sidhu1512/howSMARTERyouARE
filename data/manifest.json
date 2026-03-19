@@ -1,1 +1,19 @@
-{"mmlu": 280, "hellaswag": 200, "arc": 23, "truthfulqa": 16, "race": 69, "mathqa": 656}
+{
+    "mmlu": 287,
+    "hellaswag": 260,
+    "arc": 46,
+    "truthfulqa": 17,
+    "race": 109,
+    "mathqa": 656,
+    "aqua": 25,
+    "winogrande": 65,
+    "commonsense": 64,
+    "sciq": 80,
+    "piqa": 36,
+    "openbook": 10,
+    "boolq": 20,
+    "copa": 8,
+    "medmcqa": 60,
+    "qasc": 34,
+    "swag": 40
+}
