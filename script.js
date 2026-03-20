@@ -1055,6 +1055,7 @@ function initSpotlight() {
 function initSoundDesign() {
     var audioCtx = null;
     var soundEnabled = true;
+    var audioUnlocked = false;
     var toggle = document.getElementById('sound-toggle');
     if (!toggle) return;
 
@@ -1062,49 +1063,43 @@ function initSoundDesign() {
         if (!audioCtx) {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         }
-        // Resume if suspended (mobile requires user gesture)
         if (audioCtx.state === 'suspended') {
             audioCtx.resume();
         }
         return audioCtx;
     }
 
-    function enableSound() {
-        if (soundEnabled) return;
-        soundEnabled = true;
-        toggle.classList.add('active');
-        var onIcon = toggle.querySelector('.sound-on-icon');
-        var offIcon = toggle.querySelector('.sound-off-icon');
-        if (onIcon && offIcon) {
-            onIcon.style.display = 'block';
-            offIcon.style.display = 'none';
-        }
+    function unlockAndPlay() {
+        if (audioUnlocked) return;
+        audioUnlocked = true;
         getAudioContext();
+        // Play welcome chime to confirm sound is working
+        setTimeout(function () { playTick(660, 0.3, 0.12); }, 50);
+        setTimeout(function () { playTick(880, 0.25, 0.15); }, 150);
     }
 
-    // Auto-unlock AudioContext on first user interaction (browsers require a gesture)
-    function unlockAudio() {
-        getAudioContext();
-        // Play a welcome chime to confirm sound is working
-        setTimeout(function () { playTick(660, 0.3, 0.12); }, 100);
-        setTimeout(function () { playTick(880, 0.25, 0.15); }, 200);
-        document.removeEventListener('click', unlockAudio);
-        document.removeEventListener('touchstart', unlockAudio);
-    }
-    document.addEventListener('click', unlockAudio, { once: true });
-    document.addEventListener('touchstart', unlockAudio, { once: true });
+    // Unlock audio on first click/touch anywhere
+    document.addEventListener('click', function firstClick() {
+        if (!audioUnlocked && soundEnabled) unlockAndPlay();
+        document.removeEventListener('click', firstClick);
+    });
+    document.addEventListener('touchstart', function firstTouch() {
+        if (!audioUnlocked && soundEnabled) unlockAndPlay();
+        document.removeEventListener('touchstart', firstTouch);
+    });
 
     // Set toggle to active state by default
     toggle.classList.add('active');
-    var onIcon = toggle.querySelector('.sound-on-icon');
-    var offIcon = toggle.querySelector('.sound-off-icon');
-    if (onIcon && offIcon) {
-        onIcon.style.display = 'block';
-        offIcon.style.display = 'none';
+    var initOnIcon = toggle.querySelector('.sound-on-icon');
+    var initOffIcon = toggle.querySelector('.sound-off-icon');
+    if (initOnIcon && initOffIcon) {
+        initOnIcon.style.display = 'block';
+        initOffIcon.style.display = 'none';
     }
 
     // Toggle sound on/off
-    toggle.addEventListener('click', function () {
+    toggle.addEventListener('click', function (e) {
+        e.stopPropagation(); // prevent double-firing with unlockAudio
         soundEnabled = !soundEnabled;
         toggle.classList.toggle('active', soundEnabled);
         var onIcon = toggle.querySelector('.sound-on-icon');
@@ -1115,6 +1110,10 @@ function initSoundDesign() {
         }
 
         if (soundEnabled) {
+            // This click IS a user gesture, so unlock audio here too
+            if (!audioUnlocked) {
+                audioUnlocked = true;
+            }
             getAudioContext();
             playTick(800, 0.3, 0.12); // confirmation tone
         }
@@ -1122,7 +1121,7 @@ function initSoundDesign() {
 
     // Sound generators using Web Audio API
     function playTick(freq, vol, dur) {
-        if (!soundEnabled) return;
+        if (!soundEnabled || !audioUnlocked) return;
         try {
             var ctx = getAudioContext();
             var osc = ctx.createOscillator();
@@ -1140,7 +1139,7 @@ function initSoundDesign() {
     }
 
     function playClick() {
-        if (!soundEnabled) return;
+        if (!soundEnabled || !audioUnlocked) return;
         try {
             var ctx = getAudioContext();
             var bufferSize = ctx.sampleRate * 0.04;
@@ -1160,14 +1159,14 @@ function initSoundDesign() {
     }
 
     function playSuccess() {
-        if (!soundEnabled) return;
+        if (!soundEnabled || !audioUnlocked) return;
         playTick(523, 0.3, 0.12);
         setTimeout(function () { playTick(659, 0.3, 0.12); }, 100);
         setTimeout(function () { playTick(784, 0.25, 0.18); }, 200);
     }
 
     function playError() {
-        if (!soundEnabled) return;
+        if (!soundEnabled || !audioUnlocked) return;
         playTick(300, 0.3, 0.15);
         setTimeout(function () { playTick(200, 0.25, 0.2); }, 120);
     }
