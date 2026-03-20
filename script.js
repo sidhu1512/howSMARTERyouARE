@@ -1,10 +1,4 @@
 // ================================================================
-//  MOBILE DETECTION
-// ================================================================
-var isMobile = window.innerWidth <= 768;
-window.addEventListener('resize', function () { isMobile = window.innerWidth <= 768; });
-
-// ================================================================
 //  LOADER
 // ================================================================
 (function () {
@@ -12,9 +6,7 @@ window.addEventListener('resize', function () { isMobile = window.innerWidth <= 
         setTimeout(function () {
             var loader = document.getElementById('loader');
             if (loader) loader.classList.add('done');
-            if (!isMobile) {
-                initHorizontalScroll();
-            }
+            initHorizontalScroll();
             initStatCounters();
             initHeroCanvas();
             initTypewriter();
@@ -801,24 +793,7 @@ function scrollToPanel(panelId) {
 
 // Init number counters after horizontal scroll is set up
 window.addEventListener('load', function () {
-    if (isMobile) {
-        // On mobile, use IntersectionObserver to trigger number animation
-        setTimeout(function () {
-            var numbersPanel = document.getElementById('panel-numbers');
-            if (!numbersPanel) return;
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        animateNumberCards();
-                        observer.disconnect();
-                    }
-                });
-            }, { threshold: 0.3 });
-            observer.observe(numbersPanel);
-        }, 500);
-    } else {
-        setTimeout(initNumberCounters, 2200);
-    }
+    setTimeout(initNumberCounters, 2200);
 });
 
 // ================================================================
@@ -942,25 +917,7 @@ function initTextScramble() {
         title.setAttribute('data-scrambled', 'false');
     });
 
-    // Mobile: use IntersectionObserver since there's no horizontal scroll
-    if (isMobile) {
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    var title = entry.target;
-                    if (title.getAttribute('data-scrambled') === 'true') return;
-                    title.setAttribute('data-scrambled', 'true');
-                    scrambleReveal(title);
-                    observer.unobserve(title);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        titles.forEach(function (title) { observer.observe(title); });
-        return;
-    }
-
-    // Desktop: use scroll position to trigger scramble
+    // Use scroll position to trigger scramble
     function checkScrambleTriggers() {
         var track = document.getElementById('h-track');
         if (!track) return;
@@ -1060,49 +1017,36 @@ function initSpotlight() {
 
     var active = false;
 
-    // Track pointer position (mouse or touch)
-    function updatePosition(x, y) {
-        spotlight.style.setProperty('--spotlight-x', x + 'px');
-        spotlight.style.setProperty('--spotlight-y', y + 'px');
-    }
-
+    // Track pointer position (mouse and touch)
     document.addEventListener('mousemove', function (e) {
-        updatePosition(e.clientX, e.clientY);
+        spotlight.style.setProperty('--spotlight-x', e.clientX + 'px');
+        spotlight.style.setProperty('--spotlight-y', e.clientY + 'px');
+
+        // Activate spotlight when not on hero section
+        var track = document.getElementById('h-track');
+        if (!track) return;
+
+        var matrix = getComputedStyle(track).transform;
+        var scrollX = 0;
+        if (matrix && matrix !== 'none') {
+            var values = matrix.split(',');
+            scrollX = Math.abs(parseFloat(values[4]) || 0);
+        }
+
+        if (scrollX > window.innerWidth * 0.5) {
+            if (!active) { active = true; spotlight.classList.add('active'); }
+        } else {
+            if (active) { active = false; spotlight.classList.remove('active'); }
+        }
     });
+
+    // Touch support for mobile
     document.addEventListener('touchmove', function (e) {
         if (e.touches.length > 0) {
-            updatePosition(e.touches[0].clientX, e.touches[0].clientY);
+            spotlight.style.setProperty('--spotlight-x', e.touches[0].clientX + 'px');
+            spotlight.style.setProperty('--spotlight-y', e.touches[0].clientY + 'px');
         }
     }, { passive: true });
-
-    // Activate spotlight after scrolling past hero
-    function checkActivation() {
-        var pastHero = false;
-        if (isMobile) {
-            pastHero = window.scrollY > window.innerHeight * 0.5;
-        } else {
-            var track = document.getElementById('h-track');
-            if (track) {
-                var matrix = getComputedStyle(track).transform;
-                var scrollX = 0;
-                if (matrix && matrix !== 'none') {
-                    var values = matrix.split(',');
-                    scrollX = Math.abs(parseFloat(values[4]) || 0);
-                }
-                pastHero = scrollX > window.innerWidth * 0.5;
-            }
-        }
-
-        if (pastHero && !active) {
-            active = true;
-            spotlight.classList.add('active');
-        } else if (!pastHero && active) {
-            active = false;
-            spotlight.classList.remove('active');
-        }
-        requestAnimationFrame(checkActivation);
-    }
-    requestAnimationFrame(checkActivation);
 }
 
 // ================================================================
@@ -1118,8 +1062,34 @@ function initSoundDesign() {
         if (!audioCtx) {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         }
+        // Resume if suspended (mobile requires user gesture)
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
         return audioCtx;
     }
+
+    function enableSound() {
+        if (soundEnabled) return;
+        soundEnabled = true;
+        toggle.classList.add('active');
+        var onIcon = toggle.querySelector('.sound-on-icon');
+        var offIcon = toggle.querySelector('.sound-off-icon');
+        if (onIcon && offIcon) {
+            onIcon.style.display = 'block';
+            offIcon.style.display = 'none';
+        }
+        getAudioContext();
+    }
+
+    // Auto-enable sound on first user interaction
+    function autoEnable() {
+        enableSound();
+        document.removeEventListener('click', autoEnable);
+        document.removeEventListener('touchstart', autoEnable);
+    }
+    document.addEventListener('click', autoEnable, { once: true });
+    document.addEventListener('touchstart', autoEnable, { once: true });
 
     // Toggle sound on/off
     toggle.addEventListener('click', function () {

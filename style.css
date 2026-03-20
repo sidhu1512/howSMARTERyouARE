@@ -1077,255 +1077,110 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• RESPONSIVE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 768px) {
 
-    /* ── Fix body scroll: ensure vertical scrolling works ── */
-    html, body {
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        height: auto !important;
-    }
+    /* ── Keep horizontal scroll — just scale elements for small screens ── */
 
-    /* ── Layout: switch horizontal scroll to vertical ── */
-    .horizontal-container {
-        width: 100% !important;
-        height: auto !important;
-        overflow: visible !important;
-        position: static !important;
+    /* Smaller cards */
+    .card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        height: 380px;
+        padding: 32px 24px 28px;
     }
-    .pin-spacer {
-        height: auto !important;
-        padding: 0 !important;
-        width: 100% !important;
-        overflow: visible !important;
-        position: static !important;
-        display: block !important;
-    }
-    .h-track {
-        flex-direction: column;
-        align-items: stretch;
-        height: auto !important;
-        gap: 0;
-        padding-right: 0;
-        transform: none !important;
-        width: 100% !important;
-        position: static !important;
-    }
+    .card-num { font-size: 3rem; }
+    .card-title { font-size: 1.25rem; }
+    .card-cat { left: 24px; top: 20px; }
+    .card-arrow { right: 24px; top: 20px; }
+    .h-track { gap: 20px; padding-right: 40px; }
 
-    /* ── Hero ── */
-    .hero-merged {
-        flex: none;
-        width: 100%;
-        height: 100svh;
-        min-height: 580px;
-    }
-    .hero-center {
-        padding: 0 20px;
-        max-width: 100%;
-    }
-    .hero-line {
-        font-size: clamp(2rem, 10vw, 3.5rem) !important;
-    }
+    /* Hero adjustments */
+    .hero-center { padding: 0 20px; }
+    .hero-line { font-size: clamp(2rem, 10vw, 3.5rem) !important; }
     .hero-sub {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         white-space: normal;
         border-right: none;
         animation: none;
-        text-align: center;
     }
     .hero-stat-orbs {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 12px;
-        margin-bottom: 24px;
-    }
-    .stat-orb { padding: 14px 20px; }
-    .hero-cta {
-        padding: 14px 28px;
-        font-size: 0.78rem;
-        margin-bottom: 30px;
-    }
-    .hero-how-strip { display: none; }
-    .hero-scroll-hint { display: none; }
-    .hero-eyebrow { margin-bottom: 20px; }
-
-    /* ── All panels: full-width vertical stacking ── */
-    .panel,
-    .how-panel,
-    .story-panel,
-    .numbers-panel,
-    .faq-panel,
-    .footer-panel-full {
-        flex: none !important;
-        width: 100% !important;
-        min-width: 100% !important;
-        height: auto !important;
-        min-height: auto !important;
-        padding: 60px 24px;
-    }
-
-    /* ── Benchmark Cards ── */
-    .benchmark-anchor { display: none; }
-    .card {
-        flex: none;
-        min-width: 0;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        min-height: 300px;
-        padding: 32px 24px 28px;
-        margin: 10px 0;
-    }
-    .card-num { font-size: 3rem; }
-    .card-cat { left: 24px; top: 20px; }
-    .card-arrow { right: 24px; top: 20px; }
-
-    /* ── How It Works ── */
-    .how-steps {
-        flex-direction: column;
-        gap: 16px;
-    }
-    .how-step { padding: 28px 24px; }
-
-    /* ── Story ── */
-    .story-panel {
-        flex-direction: column;
-        gap: 32px;
-        overflow: hidden;
-    }
-    .story-image-col {
-        flex: none;
-        width: 100%;
-    }
-    .story-photo {
-        height: 45vh;
-        max-height: 350px;
-        border-radius: 16px;
-    }
-    .story-photo-secondary {
-        width: 120px; height: 90px;
-        bottom: -10px; right: -10px;
-    }
-    .story-body {
-        max-width: 100%;
-        font-size: 0.92rem;
-    }
-    .story-links {
-        flex-direction: column;
         gap: 10px;
     }
-    .story-link { justify-content: center; }
-    .section-title {
-        font-size: clamp(1.6rem, 6vw, 2.2rem);
-        margin-bottom: 24px;
-    }
+    .stat-orb { padding: 12px 18px; }
+    .hero-cta { padding: 12px 24px; font-size: 0.76rem; }
+    .hero-eyebrow { margin-bottom: 16px; font-size: 0.55rem; }
+    .hero-how-strip { display: none; }
+    .hero-scroll-hint { display: none; }
 
-    /* ── Numbers ── */
-    .numbers-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 32px;
-    }
-    .number-card { padding: 24px 16px; }
-    .number-val { font-size: clamp(1.8rem, 6vw, 2.5rem); }
-    .model-marquee { margin: 0 -24px; }
-
-    /* ── FAQ ── */
-    .faq-list { max-width: 100%; }
-    .faq-question { font-size: 0.9rem; padding: 16px 0; }
-    .faq-answer p { font-size: 0.82rem; }
-
-    /* ── Footer ── */
-    .footer-top {
-        flex-direction: column;
-        gap: 32px;
-        margin-bottom: 40px;
-    }
-    .footer-brand-col { flex: none; }
-    .footer-brand-big { font-size: 1.6rem; }
-    .footer-bottom {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-    .footer-panel {
-        flex: none;
-        width: 100%;
-        height: auto;
+    /* Section panels */
+    .how-panel, .story-panel, .numbers-panel, .faq-panel, .footer-panel-full {
         padding: 40px 24px;
     }
+    .how-steps { flex-direction: column; gap: 16px; }
+    .how-step { padding: 24px 20px; }
 
-    /* ── Modals ── */
-    .modal-window {
-        width: 96vw;
-        max-height: 85vh;
-        border-radius: 12px;
-    }
-    .results-window {
-        width: 96vw;
-        padding: 24px 20px;
-    }
-    .results-hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 16px;
-    }
-    .results-stats-row { gap: 8px; }
+    /* Story */
+    .story-panel { gap: 40px; }
+    .story-image-col { flex: 0 0 35%; }
+    .story-photo { height: 60vh; }
+    .story-photo-secondary { width: 100px; height: 75px; bottom: -8px; right: -12px; }
+    .story-body { font-size: 0.88rem; }
+    .section-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 20px; }
+
+    /* Numbers */
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .number-card { padding: 24px 16px; }
+    .number-val { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+
+    /* FAQ */
+    .faq-question { font-size: 0.88rem; }
+
+    /* Footer */
+    .footer-top { gap: 32px; }
+    .footer-brand-big { font-size: 1.6rem; }
+
+    /* Modals — make usable on small screens */
+    .modal-window { width: 96vw; max-height: 85vh; }
+    .results-window { width: 96vw; padding: 24px 20px; }
+    .results-hero { flex-direction: column; text-align: center; gap: 16px; }
     .results-stat-card .val { font-size: 0.95rem; }
     .modal-header { padding: 12px 16px; }
     .modal-content { padding: 16px; }
     .modal-footer { padding: 12px 16px; }
     .footer-hint { display: none; }
 
-    /* ── Hide desktop-only effects ── */
+    /* Hide cursor on touch devices only — all other effects stay */
     .cursor-dot, .cursor-ring { display: none !important; }
     body, a, button, .card, .faq-question,
     .menu-link, .story-link { cursor: auto !important; }
-    .grain-overlay { opacity: 0.5; }
-    .scroll-progress { display: none; }
 
-    /* ── Nav ── */
+    /* Nav */
     .top-nav { padding: 14px 20px; }
     .nav-brand { font-size: 0.68rem; }
 }
 
 /* ═══════════════ SMALL PHONES ═══════════════ */
 @media (max-width: 480px) {
-    .hero-line { font-size: clamp(1.7rem, 11vw, 2.8rem) !important; }
-    .hero-eyebrow { font-size: 0.52rem; padding: 4px 12px; }
-    .stat-orb { padding: 10px 14px; }
-    .orb-val { font-size: 1.1rem; }
-    .orb-label { font-size: 0.5rem; }
-    .card {
-        min-height: 260px;
-        padding: 28px 20px 24px;
-    }
-    .card-title { font-size: 1.2rem; }
-    .card-about { font-size: 0.75rem; }
+    .card { flex: 0 0 260px; min-width: 260px; height: 340px; padding: 28px 20px; }
+    .card-title { font-size: 1.1rem; }
+    .card-about { font-size: 0.72rem; }
     .card-num { font-size: 2.5rem; }
-    .section-title { font-size: clamp(1.4rem, 7vw, 1.8rem); }
-    .section-tag { font-size: 0.6rem; padding: 4px 10px; }
-    .number-card { padding: 18px 12px; }
-    .number-val { font-size: clamp(1.5rem, 7vw, 2rem); }
-    .story-photo { height: 35vh; max-height: 260px; }
-    .story-author {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-        padding: 14px;
-    }
-    .how-step { padding: 22px 18px; }
-    .menu-link { font-size: clamp(1.5rem, 7vw, 2.2rem); }
-    .faq-question { font-size: 0.82rem; }
+    .hero-line { font-size: clamp(1.7rem, 12vw, 2.8rem) !important; }
+    .hero-eyebrow { font-size: 0.5rem; padding: 4px 10px; }
+    .stat-orb { padding: 10px 14px; }
+    .orb-val { font-size: 1rem; }
+    .orb-label { font-size: 0.48rem; }
+    .section-title { font-size: clamp(1.3rem, 6vw, 1.6rem); }
+    .section-tag { font-size: 0.55rem; padding: 4px 10px; }
+    .number-card { padding: 16px 10px; }
+    .number-val { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+    .how-step { padding: 20px 16px; }
+    .story-body { font-size: 0.82rem; }
+    .faq-question { font-size: 0.8rem; }
     .footer-brand-big { font-size: 1.3rem; }
-    .modal-window {
-        width: 100vw;
-        max-height: 90vh;
-        border-radius: 8px 8px 0 0;
-    }
-    .results-window {
-        width: 100vw;
-        padding: 20px 16px;
-        border-radius: 8px 8px 0 0;
-    }
+    .menu-link { font-size: clamp(1.5rem, 7vw, 2.2rem); }
+    .modal-window { width: 98vw; }
+    .results-window { width: 98vw; padding: 20px 16px; }
     .results-btn-row { flex-direction: column; }
 }
 
