@@ -1054,7 +1054,7 @@ function initSpotlight() {
 // ================================================================
 function initSoundDesign() {
     var audioCtx = null;
-    var soundEnabled = false;
+    var soundEnabled = true;
     var toggle = document.getElementById('sound-toggle');
     if (!toggle) return;
 
@@ -1082,14 +1082,26 @@ function initSoundDesign() {
         getAudioContext();
     }
 
-    // Auto-enable sound on first user interaction
-    function autoEnable() {
-        enableSound();
-        document.removeEventListener('click', autoEnable);
-        document.removeEventListener('touchstart', autoEnable);
+    // Auto-unlock AudioContext on first user interaction (browsers require a gesture)
+    function unlockAudio() {
+        getAudioContext();
+        // Play a welcome chime to confirm sound is working
+        setTimeout(function () { playTick(660, 0.3, 0.12); }, 100);
+        setTimeout(function () { playTick(880, 0.25, 0.15); }, 200);
+        document.removeEventListener('click', unlockAudio);
+        document.removeEventListener('touchstart', unlockAudio);
     }
-    document.addEventListener('click', autoEnable, { once: true });
-    document.addEventListener('touchstart', autoEnable, { once: true });
+    document.addEventListener('click', unlockAudio, { once: true });
+    document.addEventListener('touchstart', unlockAudio, { once: true });
+
+    // Set toggle to active state by default
+    toggle.classList.add('active');
+    var onIcon = toggle.querySelector('.sound-on-icon');
+    var offIcon = toggle.querySelector('.sound-off-icon');
+    if (onIcon && offIcon) {
+        onIcon.style.display = 'block';
+        offIcon.style.display = 'none';
+    }
 
     // Toggle sound on/off
     toggle.addEventListener('click', function () {
@@ -1104,7 +1116,7 @@ function initSoundDesign() {
 
         if (soundEnabled) {
             getAudioContext();
-            playTick(800, 0.06, 0.05); // subtle confirmation
+            playTick(800, 0.3, 0.12); // confirmation tone
         }
     });
 
@@ -1119,11 +1131,11 @@ function initSoundDesign() {
             gain.connect(ctx.destination);
             osc.type = 'sine';
             osc.frequency.setValueAtTime(freq, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(freq * 0.5, ctx.currentTime + dur);
+            osc.frequency.exponentialRampToValueAtTime(freq * 0.7, ctx.currentTime + dur);
             gain.gain.setValueAtTime(vol, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur + 0.05);
             osc.start(ctx.currentTime);
-            osc.stop(ctx.currentTime + dur);
+            osc.stop(ctx.currentTime + dur + 0.05);
         } catch (e) { /* silent fail */ }
     }
 
@@ -1131,16 +1143,16 @@ function initSoundDesign() {
         if (!soundEnabled) return;
         try {
             var ctx = getAudioContext();
-            var bufferSize = ctx.sampleRate * 0.02;
+            var bufferSize = ctx.sampleRate * 0.04;
             var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
             var data = buffer.getChannelData(0);
             for (var i = 0; i < bufferSize; i++) {
-                data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 10);
+                data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 6);
             }
             var source = ctx.createBufferSource();
             var gain = ctx.createGain();
             source.buffer = buffer;
-            gain.gain.setValueAtTime(0.04, ctx.currentTime);
+            gain.gain.setValueAtTime(0.25, ctx.currentTime);
             source.connect(gain);
             gain.connect(ctx.destination);
             source.start();
@@ -1149,27 +1161,27 @@ function initSoundDesign() {
 
     function playSuccess() {
         if (!soundEnabled) return;
-        playTick(523, 0.05, 0.08);
-        setTimeout(function () { playTick(659, 0.05, 0.08); }, 80);
-        setTimeout(function () { playTick(784, 0.04, 0.12); }, 160);
+        playTick(523, 0.3, 0.12);
+        setTimeout(function () { playTick(659, 0.3, 0.12); }, 100);
+        setTimeout(function () { playTick(784, 0.25, 0.18); }, 200);
     }
 
     function playError() {
         if (!soundEnabled) return;
-        playTick(300, 0.05, 0.1);
-        setTimeout(function () { playTick(250, 0.04, 0.15); }, 100);
+        playTick(300, 0.3, 0.15);
+        setTimeout(function () { playTick(200, 0.25, 0.2); }, 120);
     }
 
     // Attach sounds to interactive elements
     // Card hover
     document.querySelectorAll('.card').forEach(function (card) {
-        card.addEventListener('mouseenter', function () { playTick(600, 0.03, 0.04); });
+        card.addEventListener('mouseenter', function () { playTick(600, 0.2, 0.08); });
         card.addEventListener('click', function () { playClick(); });
     });
 
     // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(function (q) {
-        q.addEventListener('click', function () { playTick(500, 0.04, 0.05); });
+        q.addEventListener('click', function () { playTick(500, 0.25, 0.1); });
     });
 
     // Option buttons (quiz) — listen dynamically
@@ -1187,19 +1199,19 @@ function initSoundDesign() {
 
     // Menu links
     document.querySelectorAll('.menu-link').forEach(function (link) {
-        link.addEventListener('mouseenter', function () { playTick(700, 0.02, 0.03); });
+        link.addEventListener('mouseenter', function () { playTick(700, 0.2, 0.08); });
     });
 
     // CTA button
     var cta = document.querySelector('.hero-cta');
     if (cta) {
-        cta.addEventListener('mouseenter', function () { playTick(440, 0.04, 0.06); });
+        cta.addEventListener('mouseenter', function () { playTick(440, 0.25, 0.1); });
         cta.addEventListener('click', function () { playClick(); });
     }
 
     // Nav toggle
     var menuToggle = document.getElementById('menu-toggle');
     if (menuToggle) {
-        menuToggle.addEventListener('click', function () { playTick(550, 0.04, 0.05); });
+        menuToggle.addEventListener('click', function () { playTick(550, 0.25, 0.1); });
     }
 }

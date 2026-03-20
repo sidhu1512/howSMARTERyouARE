@@ -1149,11 +1149,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     .modal-footer { padding: 12px 16px; }
     .footer-hint { display: none; }
 
-    /* Hide cursor on touch devices only — all other effects stay */
-    .cursor-dot, .cursor-ring { display: none !important; }
-    body, a, button, .card, .faq-question,
-    .menu-link, .story-link { cursor: auto !important; }
-
     /* Nav */
     .top-nav { padding: 14px 20px; }
     .nav-brand { font-size: 0.68rem; }
